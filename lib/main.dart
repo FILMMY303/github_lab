@@ -12,7 +12,7 @@ class MyPage extends StatefulWidget {
 }
  
 class _MyPageState extends State<MyPage> {
-  String message = 'ยังไม่ได้กดปุ่';
+  String message = 'ยังไม่ได้กดปุ่ม';
  
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _MyPageState extends State<MyPage> {
                   message = 'กดปุ่มแล้ว!';
                 });
               },
-              child: const Text('กดฉัน'),
+              child: const Text('hello again'),
             ),
           ],
         ),
