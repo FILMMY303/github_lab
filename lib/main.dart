@@ -1,36 +1,59 @@
-import 'package:flutter/material.dart';
- 
+﻿import 'package:flutter/material.dart';
+
 void main() {
   runApp(const MaterialApp(home: MyPage()));
 }
- 
-class MyPage extends StatefulWidget {
+
+class MyPage extends StatelessWidget {
   const MyPage({super.key});
- 
-  @override
-  State<MyPage> createState() => _MyPageState();
-}
- 
-class _MyPageState extends State<MyPage> {
-  String message = 'ยังไม่ได้กดปุ่ม';
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('GitHub Lab')),
       body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) => const ProfilePage(),
+              ),
+            );
+          },
+          child: const Text('Press'),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Back',
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: const Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(message),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  message = 'กดปุ่มแล้ว!';
-                });
-              },
-              child: const Text('hello'),
+            CircleAvatar(
+              radius: 40,
+              child: Icon(Icons.person, size: 48),
             ),
+            SizedBox(height: 16),
+            Text('Profile', style: TextStyle(fontSize: 24)),
+            SizedBox(height: 8),
+            Text('Your profile details go here.'),
           ],
         ),
       ),
